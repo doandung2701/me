@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="description" content="AWB wraps Claude Code, Codex and Gemini in a production harness: guardrail hooks, architecture gates, ratchet learning and Stack Packs." />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>AWB — The Production Agent Harness & Stack Pack Engine</title>
+  <style>
+    :root { --bg: #0b0f17; --card: #131b2e; --text: #e2e8f0; --muted: #94a3b8; --accent: #38bdf8; --ok: #4ade80; }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: system-ui, -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+    main { max-width: 980px; margin: 0 auto; padding: 3rem 1.5rem; }
+    h1 { font-size: 2.6rem; line-height: 1.15; margin-bottom: 0.75rem; }
+    .sub { font-size: 1.2rem; color: var(--muted); max-width: 720px; }
+    pre { background: #06090f; border: 1px solid #1e293b; padding: 1rem; border-radius: 8px; overflow-x: auto; color: var(--ok); }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 1.25rem; margin: 2rem 0; }
+    .card { background: var(--card); border: 1px solid #1e293b; border-radius: 10px; padding: 1.25rem; }
+    .price { font-size: 2rem; font-weight: 700; color: var(--accent); }
+    .btn { display: inline-block; background: var(--accent); color: #0b0f17; font-weight: 700; padding: 0.65rem 1.25rem; border-radius: 6px; text-decoration: none; margin-top: 0.75rem; }
+    table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; }
+    th, td { text-align: left; padding: 0.65rem; border-bottom: 1px solid #1e293b; }
+  </style>
+</head>
+<body>
+  <main>
+    <p><code>Agent = Model + Harness</code></p>
+    <h1>Stop shipping AI slop.<br/>Wrap your coding agent in a production harness.</h1>
+    <p class="sub">AWB wraps Claude Code, Codex, Gemini, and Antigravity (<code>agy</code>) with pre-action guardrail hooks, architecture boundaries, automatic ratchet learning, and battle-tested Stack Packs for <b>Java Spring Boot</b>, <b>Go</b>, <b>NestJS</b>, and <b>React/Vite</b>.</p>
+
+    <pre><code>$ npx @awb/cli init --demo
+$ awb hook install -t demo
+$ awb pack install spring-boot
+$ awb run add-order-endpoint --agent agy --max-cost 0.50</code></pre>
+
+    <h2>Verified Benchmark: Bare Agent vs. AWB Harness + Stack Pack</h2>
+    <table>
+      <thead><tr><th>Scenario</th><th>Bare Single-Shot Agent</th><th>AWB Harness + Stack Pack</th></tr></thead>
+      <tbody>
+        <tr><td>Spring Boot Controller (no <code>@Autowired</code> field injection)</td><td>FAIL (0%)</td><td><b>PASS (Attempt 2)</b></td></tr>
+        <tr><td>Go Service Domain Purity (no <code>panic()</code> / HTTP in domain)</td><td>FAIL (0%)</td><td><b>PASS (Attempt 2)</b></td></tr>
+        <tr><td>NestJS Layering (Controller delegates to Service, not Repo)</td><td>FAIL (0%)</td><td><b>PASS (Attempt 2)</b></td></tr>
+        <tr><td>React + Vite Strict Props (no explicit <code>: any</code>)</td><td>FAIL (0%)</td><td><b>PASS (Attempt 2)</b></td></tr>
+      </tbody>
+    </table>
+
+    <h2>Pricing</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Core (MIT)</h3>
+        <div class="price">$0</div>
+        <ul>
+          <li>Task contracts, plans &amp; scope gates</li>
+          <li>PreToolUse guardrail hooks (Claude &amp; Codex)</li>
+          <li>Architecture boundary checker (<code>arch.yml</code>)</li>
+          <li>Free <code>generic</code>, <code>react-vite</code> &amp; <code>security-baseline</code> packs</li>
+          <li>Local Run-Review Inbox Dashboard</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>AWB Pro</h3>
+        <div class="price">$79 / yr</div>
+        <ul>
+          <li>All Pro Stack Packs: <b>Spring Boot</b>, <b>Go</b>, <b>NestJS</b>, <b>Postgres</b>, <b>Docker</b>, <b>OpenAPI</b>, <b>Monorepo</b></li>
+          <li>Automatic Ratchet &amp; token pruning (<code>awb learn</code>)</li>
+          <li>Long-running agent harness (<code>features.json</code> + <code>progress.md</code>)</li>
+          <li>Isolated git worktrees, Reviewer Agent &amp; Headless CI (JSON/SARIF/JUnit)</li>
+        </ul>
+        <a class="btn" href="#checkout-pro">Buy Pro License</a>
+      </div>
+      <div class="card">
+        <h3>AWB Team</h3>
+        <div class="price">$249 / yr</div>
+        <ul>
+          <li>Everything in Pro (up to 10 seats)</li>
+          <li>Shared team rules &amp; memory bundle sync (<code>awb team export/import</code>)</li>
+          <li>Repository actor audit log (<code>awb team audit</code>)</li>
+          <li>Custom internal Stack Pack authoring kit</li>
+        </ul>
+        <a class="btn" href="#checkout-team">Buy Team License</a>
+      </div>
+    </div>
+    <h2 id="terms">Terms, Refunds &amp; Privacy</h2>
+    <div class="card">
+      <p><b>Licensing.</b> AWB Core is MIT-licensed. Pro and Team are annual, per-seat software licenses delivered as a license key after purchase. Payments are processed by our merchant of record, Polar.</p>
+      <p><b>Refunds.</b> Full refund within 14 days of purchase, no questions asked. Contact support with your order ID.</p>
+      <p><b>Privacy.</b> AWB runs locally. The CLI and dashboard send no telemetry and never upload your code. We only keep the billing details Polar needs to issue your license.</p>
+    </div>
+
+    <footer style="margin-top:3rem;color:var(--muted);border-top:1px solid #1e293b;padding-top:1.25rem">
+      <a style="color:var(--accent)" href="https://github.com/doandung2701/me/issues">Support</a> ·
+      <a style="color:var(--accent)" href="#terms">Terms &amp; Refunds</a>
+      <p>© 2026 AWB — Agent Workbench</p>
+    </footer>
+  </main>
+</body>
+</html>
