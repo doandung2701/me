@@ -46,7 +46,7 @@
     header.site { border-bottom: 1px solid var(--rule); }
     header.site .wrap { display: flex; justify-content: space-between; align-items: baseline; padding-top: 18px; padding-bottom: 18px; gap: 16px; flex-wrap: wrap; }
     .mark { font-family: var(--font-serif); font-size: 1.5rem; text-decoration: none; }
-    nav a { font-size: .9rem; color: var(--muted); text-decoration: none; margin-left: 20px; }
+    nav a { font-size: .9rem; white-space: nowrap; color: var(--muted); text-decoration: none; margin-left: 16px; } nav a:first-child { margin-left: 0; }
     nav a:hover { color: var(--ink); }
 
     .hero { padding: 72px 0 56px; border-bottom: 1px solid var(--rule); }
@@ -55,7 +55,7 @@
     h1 em { color: var(--signal); }
     .lede { font-size: 1.15rem; color: var(--muted); max-width: 56ch; margin-top: 20px; }
 
-    .index { display: grid; grid-template-columns: 1fr; border-top: 1px solid var(--ink); margin-top: 48px; }
+    .index { display: grid; grid-template-columns: minmax(0, 1fr); border-top: 1px solid var(--ink); margin-top: 48px; }
     @media (min-width: 720px) { .index { grid-template-columns: 1fr 1fr; } }
     .index a { display: block; padding: 20px 0; text-decoration: none; border-bottom: 1px solid var(--rule); }
     @media (min-width: 720px) { .index a + a { padding-left: 28px; border-left: 1px solid var(--rule); } }
@@ -64,7 +64,7 @@
     .index span.d { color: var(--muted); font-size: .95rem; }
 
     section.product { padding: 80px 0; border-bottom: 1px solid var(--rule); }
-    .head { display: grid; gap: 24px; grid-template-columns: 1fr; margin-bottom: 40px; }
+    .head { display: grid; gap: 24px; grid-template-columns: minmax(0, 1fr); margin-bottom: 40px; }
     @media (min-width: 860px) { .head { grid-template-columns: 5fr 7fr; align-items: end; } }
     h2 { font-size: clamp(2.2rem, 5vw, 3.6rem); }
     .head p { color: var(--muted); margin: 0; max-width: 58ch; }
@@ -80,7 +80,7 @@
     .fail { color: var(--muted); } .pass { color: var(--sage); font-weight: 500; }
     .scroll { overflow-x: auto; }
 
-    .plans { display: grid; grid-template-columns: 1fr; border: 1px solid var(--ink); }
+    .plans { display: grid; grid-template-columns: minmax(0, 1fr); border: 1px solid var(--ink); }
     @media (min-width: 860px) { .plans { grid-template-columns: repeat(3, 1fr); } }
     .plan { padding: 28px; background: var(--surface); display: flex; flex-direction: column; }
     .plan + .plan { border-top: 1px solid var(--rule); }
@@ -94,7 +94,7 @@
     .btn.primary { background: var(--ink); color: var(--paper); }
     .btn:hover { background: var(--signal); border-color: var(--signal); color: #fff; }
 
-    .theme { display: grid; gap: 40px; grid-template-columns: 1fr; }
+    .theme { display: grid; gap: 40px; grid-template-columns: minmax(0, 1fr); }
     @media (min-width: 860px) { .theme { grid-template-columns: 7fr 5fr; } }
     figure { margin: 0; }
     figure img { width: 100%; height: auto; display: block; border: 1px solid var(--rule); border-radius: 4px; }
@@ -103,7 +103,7 @@
     dt { font-family: var(--font-mono); font-size: .8rem; color: var(--muted); padding-top: 3px; }
     dd { margin: 0; }
 
-    .policies { display: grid; gap: 32px; grid-template-columns: 1fr; padding: 80px 0; }
+    .policies { display: grid; gap: 32px; grid-template-columns: minmax(0, 1fr); padding: 80px 0; }
     @media (min-width: 860px) { .policies { grid-template-columns: repeat(3, 1fr); } }
     .policies h3 { font-size: 1.5rem; margin-bottom: 8px; }
     .policies p { color: var(--muted); margin: 0; }
@@ -111,7 +111,7 @@
     footer { border-top: 1px solid var(--ink); padding: 28px 0 48px; font-size: .9rem; color: var(--muted); }
     footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
 
-    .replay { display: grid; grid-template-columns: 1fr; gap: 1px; background: var(--rule); border: 1px solid var(--ink); margin: 40px 0 8px; }
+    .replay { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1px; background: var(--rule); border: 1px solid var(--ink); margin: 40px 0 8px; }
     @media (min-width: 860px) { .replay { grid-template-columns: 1fr 1fr; } }
     .term { background: #1b1915; color: #ede6d8; font: 400 .82rem/1.7 var(--font-mono); padding: 16px 18px; min-height: 300px; white-space: pre-wrap; }
     .term .t { color: #a59d8e; display: block; border-bottom: 1px solid #34302a; padding-bottom: 8px; margin-bottom: 10px; }
@@ -129,15 +129,15 @@
     .assure { font-size: .88rem; color: var(--muted); margin-top: 14px; }
     .pains { margin: 56px 0 0; }
     .pains h3, .explorer h3 { font-size: 1.8rem; margin-bottom: 16px; }
-    .pains ol { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: 1fr; border-top: 1px solid var(--rule); }
+    .pains ol { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: minmax(0, 1fr); border-top: 1px solid var(--rule); }
     @media (min-width: 720px) { .pains ol { grid-template-columns: 1fr 1fr; } }
-    .pains li { padding: 14px 16px 14px 0; border-bottom: 1px solid var(--rule); display: flex; gap: 14px; }
+    .pains li { padding: 14px 16px 14px 0; border-bottom: 1px solid var(--rule); } .pains li .num { margin-right: 12px; }
     .pains > p { font-size: 1.1rem; margin-top: 20px; }
     .explorer { margin-top: 56px; }
     .tabs { display: flex; flex-wrap: wrap; gap: 0; border-bottom: 1px solid var(--ink); }
     .tabs button { font: 500 .9rem var(--font-sans); background: none; border: 0; border-bottom: 2px solid transparent; color: var(--muted); padding: 10px 14px; cursor: pointer; margin-bottom: -1px; }
     .tabs button[aria-selected="true"] { color: var(--ink); border-bottom-color: var(--signal); }
-    .rules { display: grid; grid-template-columns: 1fr; gap: 24px; padding: 24px 0 0; }
+    .rules { display: grid; grid-template-columns: minmax(0, 1fr); gap: 24px; padding: 24px 0 0; }
     @media (min-width: 860px) { .rules { grid-template-columns: 2fr 1fr 1fr; } }
     .rules ul { padding-left: 18px; margin: 8px 0 0; } .rules li { margin-bottom: 8px; }
     .rules ul.mono { font-size: .82rem; list-style: none; padding: 0; }
