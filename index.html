@@ -121,6 +121,31 @@
     .replay-note { font-family: var(--font-mono); font-size: .8rem; color: var(--muted); display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
     .replay-note button { font: inherit; background: none; border: 1px solid var(--rule); color: var(--ink); padding: 4px 10px; border-radius: 4px; cursor: pointer; }
 
+    .mono { font-family: var(--font-mono); font-weight: 400; }
+    .cta-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+    button.btn { font: inherit; font-weight: 600; cursor: pointer; }
+    .btn.copy { display: inline-flex; gap: 14px; align-items: center; }
+    .copy-l { font-size: .75rem; opacity: .7; }
+    .assure { font-size: .88rem; color: var(--muted); margin-top: 14px; }
+    .pains { margin: 56px 0 0; }
+    .pains h3, .explorer h3 { font-size: 1.8rem; margin-bottom: 16px; }
+    .pains ol { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: 1fr; border-top: 1px solid var(--rule); }
+    @media (min-width: 720px) { .pains ol { grid-template-columns: 1fr 1fr; } }
+    .pains li { padding: 14px 16px 14px 0; border-bottom: 1px solid var(--rule); display: flex; gap: 14px; }
+    .pains > p { font-size: 1.1rem; margin-top: 20px; }
+    .explorer { margin-top: 56px; }
+    .tabs { display: flex; flex-wrap: wrap; gap: 0; border-bottom: 1px solid var(--ink); }
+    .tabs button { font: 500 .9rem var(--font-sans); background: none; border: 0; border-bottom: 2px solid transparent; color: var(--muted); padding: 10px 14px; cursor: pointer; margin-bottom: -1px; }
+    .tabs button[aria-selected="true"] { color: var(--ink); border-bottom-color: var(--signal); }
+    .rules { display: grid; grid-template-columns: 1fr; gap: 24px; padding: 24px 0 0; }
+    @media (min-width: 860px) { .rules { grid-template-columns: 2fr 1fr 1fr; } }
+    .rules ul { padding-left: 18px; margin: 8px 0 0; } .rules li { margin-bottom: 8px; }
+    .rules ul.mono { font-size: .82rem; list-style: none; padding: 0; }
+    .faq details { border-bottom: 1px solid var(--rule); padding: 16px 0; }
+    .faq summary { cursor: pointer; font-weight: 500; font-size: 1.05rem; }
+    .faq details p { color: var(--muted); margin: 10px 0 0; max-width: 70ch; }
+    .closer { padding: 88px 0; background: var(--surface); border-bottom: 1px solid var(--rule); }
+
     @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; animation: none !important; } }
   </style>
 </head>
@@ -135,8 +160,13 @@
   <main id="top">
     <section class="hero">
       <div class="wrap">
-        <h1>Tools that hold a <em>standard</em>.</h1>
-        <p class="lede">An independent studio making two things: a harness that keeps coding agents honest, and a hand-built Astro theme for health brands that need to look trustworthy on day one.</p>
+        <h1>Your AI agent writes code fast. <em>Who checks it?</em></h1>
+        <p class="lede">AWB blocks the mistakes Claude Code, Codex and Gemini make, before they reach your repo. It retries until your architecture, tests and security checks pass. Set up in about 2 minutes.</p>
+        <div class="cta-row">
+          <a class="btn primary" href="mailto:doandung2701@gmail.com?subject=AWB%20early%20access&body=My%20stack%3A%20%0AMy%20agent%3A%20">Get early access</a>
+          <a class="btn" href="#awb-try">See it catch a bug</a>
+        </div>
+        <p class="assure">In private early access · runs locally, your code never leaves your machine · 14-day refund on paid plans</p>
         <div class="index">
           <a href="#awb"><span class="num">01</span><strong>AWB — Agent Workbench</strong><span class="d">Guardrails, gates and Stack Packs for Claude Code, Codex and Gemini.</span></a>
           <a href="#aethelgard"><span class="num">02</span><strong>Aethelgard Astro Theme</strong><span class="d">A 9-route Astro 5 site for longevity and diagnostics clinics.</span></a>
@@ -156,6 +186,31 @@ $ npx @awb/cli init --demo
 $ awb hook install -t demo
 $ awb pack install spring-boot
 $ awb run add-order-endpoint --agent claude --max-cost 0.50</code></pre>
+
+        <div class="pains" id="awb-try">
+          <h3>Sound familiar?</h3>
+          <ol>
+            <li><span class="num">01</span>The agent “fixed” the bug by importing the repository straight into the controller.</li>
+            <li><span class="num">02</span>It ran <code>prisma migrate reset --force</code> on the wrong database.</li>
+            <li><span class="num">03</span>It read <code>.env</code> and pasted a key into a test fixture.</li>
+            <li><span class="num">04</span>It said “all tests pass”. They didn't run.</li>
+          </ol>
+          <p>Prompts and <code>CLAUDE.md</code> are suggestions. AWB turns them into checks the agent cannot skip.</p>
+        </div>
+
+        <div class="explorer">
+          <h3>What AWB enforces on your stack</h3>
+          <div class="tabs" role="tablist" aria-label="Choose a stack">
+            <button role="tab" aria-selected="true" data-k="spring">Spring Boot</button><button role="tab" aria-selected="false" data-k="go">Go</button><button role="tab" aria-selected="false" data-k="nest">NestJS</button><button role="tab" aria-selected="false" data-k="react">React / Vite</button><button role="tab" aria-selected="false" data-k="pg">Postgres</button><button role="tab" aria-selected="false" data-k="docker">Docker</button>
+          </div>
+          <div class="rules" role="tabpanel" aria-live="polite">
+            <div><span class="num">Architecture rules</span><ul id="r-a"></ul></div>
+            <div><span class="num">Commands blocked</span><ul id="r-c" class="mono"></ul></div>
+            <div><span class="num">Must pass before commit</span><ul id="r-g" class="mono"></ul></div>
+          </div>
+          <p class="assure" id="r-tier"></p>
+        </div>
+
 
 
         <div class="replay" aria-label="Replay: the same task run by a bare agent and by AWB">
@@ -222,6 +277,7 @@ $ awb run add-order-endpoint --agent claude --max-cost 0.50</code></pre>
         <div class="head">
           <div><span class="num">02 / Astro theme</span><h2 id="ae-h">Aethelgard</h2></div>
           <p>Tactile Humanist Trust: botanical alabaster and forest emerald, built for longevity medicine and precision-diagnostics clinics. Edit one data file to rebrand the whole site.</p>
+          <p class="assure" style="grid-column:1/-1">For clinics, wellness founders and the agencies building their sites. You skip about two weeks of design and build and launch with a finished, accessible, SEO-ready site.</p>
         </div>
         <div class="theme">
           <figure>
@@ -242,6 +298,32 @@ $ awb run add-order-endpoint --agent claude --max-cost 0.50</code></pre>
             <a class="btn primary" href="https://buy.polar.sh/polar_cl_NME667sQTm742oAxpSYBk8rZB70rURcrzQsPi1INbEw">Buy Aethelgard — $59</a>
             <a class="btn" href="https://aethelgard-astro-theme.vercel.app/" target="_blank" rel="noopener">View live demo</a>
           </div>
+        </div>
+      </div>
+    </section>
+
+
+    <section class="product" id="faq" aria-labelledby="faq-h">
+      <div class="wrap">
+        <div class="head"><div><span class="num">Questions</span><h2 id="faq-h">Before you buy</h2></div>
+          <p>Early access is by email: tell me your stack and agent. If Pro doesn't pay for itself within 14 days, email me for a full refund.</p></div>
+        <div class="faq">
+          <details><summary>Does AWB send my code anywhere?</summary><p>No. The CLI, gates and dashboard all run locally. There's no telemetry. Your agent talks to its own provider as usual.</p></details>
+          <details><summary>Which agents does it work with?</summary><p>Claude Code, Codex, Gemini CLI and Antigravity, plus any custom CLI you can call from a shell.</p></details>
+          <details><summary>Will it slow my agent down?</summary><p>Gates run your existing build, lint and test commands, so a check takes about as long as running them yourself. A failed check saves you finding the same problem in review.</p></details>
+          <details><summary>What's the difference between Core and Pro?</summary><p>Core gives you the harness, guardrail hooks and the generic, React and security packs. Pro adds the Spring Boot, Go, NestJS, Postgres, Docker, OpenAPI and monorepo packs, automatic ratchet learning and headless CI output.</p></details>
+          <details><summary>How do I pay for AWB Pro or Team?</summary><p>Email <a href="mailto:doandung2701@gmail.com">doandung2701@gmail.com</a>. Tell me your stack and team size, and I'll send a checkout link and your licence key.</p></details>
+          <details><summary>Can I use Aethelgard for a client site?</summary><p>Yes, for one end product per purchase. You can't resell the theme itself.</p></details>
+        </div>
+      </div>
+    </section>
+
+    <section class="closer">
+      <div class="wrap">
+        <h2>Stop reviewing the same mistake twice.</h2>
+        <div class="cta-row">
+          <a class="btn primary" href="mailto:doandung2701@gmail.com?subject=AWB%20early%20access&body=My%20stack%3A%20%0AMy%20agent%3A%20">Get early access</a>
+          <a class="btn" href="mailto:doandung2701@gmail.com?subject=AWB%20Pro%20licence">Email to buy Pro</a>
         </div>
       </div>
     </section>
@@ -283,6 +365,27 @@ $ awb run add-order-endpoint --agent claude --max-cost 0.50</code></pre>
       var io = new IntersectionObserver(function (e) { if (e[0].isIntersecting) { play(); io.disconnect(); } });
       io.observe(terms[0]);
     })();
+  </script>
+<script>
+    // Rule data copied from packages/core/src/packs.ts — keep in sync when packs change.
+    var R = {
+      spring: ['Pro', ['Field injection (@Autowired private ...) is forbidden; use constructor injection.','Controllers must not import Repositories or EntityManager; delegate through a @Service.','@Transactional belongs on the @Service layer, not on controllers.'], ['mvn flyway:clean','gradle flywayClean','mvn deploy'], ['mvn test-compile','mvn test']],
+      go: ['Pro', ['Domain package must stay pure: no HTTP frameworks or database/sql.','No panic() in application packages; return structured errors.'], ['go clean -modcache','rm -rf vendor'], ['go build ./...','go vet ./...','go test -race ./...']],
+      nest: ['Pro', ['Controllers delegate to Services, never import Repositories or ORM clients.','DTOs use explicit types and class-validator decorators, never any.'], ['npx typeorm schema:drop','prisma migrate reset --force'], ['npm run build','npm run lint','npm test']],
+      react: ['Free in Core', ['UI components must not import Node built-ins, DB drivers or server code.','No explicit any in components; type your props and state.'], ['npm publish','rm -rf node_modules'], ['npm run typecheck','npm run build','npm test']],
+      pg: ['Pro', ['DROP DATABASE / TRUNCATE TABLE blocked in migrations.','Applied migration files are immutable.'], ['dropdb','psql … DROP DATABASE','prisma migrate reset'], []],
+      docker: ['Pro', ['Pin image versions instead of :latest.','No secret files copied into image layers.'], ['docker system prune -af --volumes'], ['service healthcheck check']]
+    };
+    var common = ['scope gate','secret scan'];
+    function show(k) {
+      var d = R[k];
+      function fill(id, xs) { var u = document.getElementById(id); u.textContent = ''; xs.forEach(function (x) { var li = document.createElement('li'); li.textContent = x; u.appendChild(li); }); }
+      fill('r-a', d[1]); fill('r-c', d[2]); fill('r-g', common.concat(d[3]));
+      document.getElementById('r-tier').textContent = d[0] === 'Pro' ? 'Included in AWB Pro and Team. Every stack also gets the free security baseline (no eval, no chmod 777, no curl | sh).' : 'Free in AWB Core, along with the security baseline.';
+      document.querySelectorAll('.tabs button').forEach(function (b) { b.setAttribute('aria-selected', b.dataset.k === k); });
+    }
+    document.querySelectorAll('.tabs button').forEach(function (b) { b.addEventListener('click', function () { show(b.dataset.k); }); });
+    show('spring');
   </script>
 </body>
 </html>
